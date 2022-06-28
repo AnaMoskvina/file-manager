@@ -4,7 +4,11 @@ import fs from 'fs'
 
 const changeDir = (pathName) => {
     const newPath = path.resolve(pathName)
-    if (newPath === os.homedir()) return os.homedir()
+    const isSubDir = os.homedir().includes(newPath)
+    if (isSubDir) {
+        process.chdir(os.homedir())
+        return os.homedir()
+    }
     process.chdir(newPath)
     return newPath
 }
