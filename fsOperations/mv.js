@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { EXECUTION_ERROR_MESSAGE } from '../constants'
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
 // !path to dir
 export const mv = (originPath, copyPath) => {

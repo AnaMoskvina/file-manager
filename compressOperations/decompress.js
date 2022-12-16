@@ -1,6 +1,6 @@
 import gzip from 'zlib'
 import { createReadStream, createWriteStream } from 'fs'
-import { EXECUTION_ERROR_MESSAGE } from '../constants'
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
 export const decompress = (pathToSource, pathToDestination) => {
     const brotli = gzip.createBrotliDecompress()

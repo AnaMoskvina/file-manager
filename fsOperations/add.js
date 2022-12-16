@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { EXECUTION_ERROR_MESSAGE } from '../constants'
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
 export const add = (fileName) => { 
     const readeable = fs.createWriteStream(path.resolve(process.cwd(), fileName))

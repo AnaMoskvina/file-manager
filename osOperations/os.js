@@ -1,5 +1,5 @@
 import nodeOs from 'os'
-import { INVALID_INPUT_MESSAGE } from '../constants';
+import { INVALID_INPUT_MESSAGE } from '../constants.js';
 
 export const os = (flag) => {
     switch(flag) {

@@ -2,7 +2,7 @@ import os from 'os'
 import path from 'path'
 import fs, { rmSync } from 'fs'
 import fsPromises from 'fs/promises';
-import { EXECUTION_ERROR_MESSAGE } from '../constants';
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js';
 
 const changeDir = (pathName) => {
     const newPath = path.resolve(pathName)

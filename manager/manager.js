@@ -1,6 +1,6 @@
 import { operations } from "./operations.js"
 import { parseCmd } from "../utils/parseCmd.js"
-import { INVALID_INPUT_MESSAGE} from '../constants'
+import { INVALID_INPUT_MESSAGE} from '../constants.js'
 
 const getIsExitCmd = cmd => parseCmd(cmd)[0] === '.exit'
 

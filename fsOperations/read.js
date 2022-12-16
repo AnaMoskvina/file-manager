@@ -1,7 +1,7 @@
 import fs from 'fs'
 import os from 'os'
 import { stdout } from 'process'
-import { EXECUTION_ERROR_MESSAGE } from '../constants'
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
 export const read = (filePath) => {
     const readStream = fs.createReadStream(filePath)

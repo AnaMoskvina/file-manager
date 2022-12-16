@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { EXECUTION_ERROR_MESSAGE } from '../constants'
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
 export const rn = (wrongFilePath, properFilePath) => {
     fs.access(wrongFilePath, fs.constants.F_OK, err => {

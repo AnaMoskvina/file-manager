@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { EXECUTION_ERROR_MESSAGE } from '../constants'
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
 export const rm = (filePath) => {
     fs.rm(filePath, err => {
