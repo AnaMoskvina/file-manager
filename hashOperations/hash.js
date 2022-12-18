@@ -1,16 +1,22 @@
 import fs from 'fs'
 import os from 'os'
 import { stdout } from 'process'
+import { Transform } from 'stream'
 const { createHash } = await import('node:crypto')
 
-export const hash = (filePath) => {
-  const hash = createHash('sha256')
-  fs.createReadStream(filePath)
-    .pipe(hash)
-    .setEncoding('hex')
-    .pipe(stdout)
+export const hash = filePath => {
 
-  hash.on('close', () => {
-    console.log(os.EOL)
+  const newLineTransform = new Transform({
+    transform(chunk, _encoding, callback) {
+      this.push(chunk)
+      this.push(os.EOL)
+      callback()
+    }
   })
+
+  fs.createReadStream(filePath)
+    .pipe(createHash('sha256'))
+    .setEncoding('hex')
+    .pipe(newLineTransform)
+    .pipe(stdout)
 }

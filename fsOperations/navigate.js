@@ -1,15 +1,20 @@
 import os from 'os'
 import path from 'path'
+import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
-const changeDir = (pathName) => {
-    const newPath = path.resolve(pathName)
-    const isSubDir = os.homedir().includes(newPath)
-    if (isSubDir) {
-        process.chdir(os.homedir())
-        return os.homedir()
+const changeDir = async (pathName) => {
+    try {
+        const newPath = path.resolve(pathName)
+        const isSubDir = os.homedir().includes(newPath)
+        if (isSubDir) {
+            process.chdir(os.homedir())
+            return os.homedir()
+        }
+        process.chdir(newPath)
+        return newPath
+    } catch(_err) {
+        throw new Error(EXECUTION_ERROR_MESSAGE)
     }
-    process.chdir(newPath)
-    return newPath
 }
 
 export const cd = (pathName) => {

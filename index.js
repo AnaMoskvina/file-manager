@@ -13,8 +13,8 @@ process.on('SIGINT', () => {
     process.exit()
 })
 
-process.stdin.on('data', data => {
-    manageCmd(data)
+process.stdin.on('data', async data => {
+    await manageCmd(data)
     printCurrentDirPath()
 })
 

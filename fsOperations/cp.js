@@ -1,11 +1,12 @@
+import path from 'path'
 import fs from 'fs'
+import { fileNameResolver } from './utils.js'
 import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
 
-// !path to dir
-export const cp = (originPath, copyPath) => {
-
+export const cp = async (originPath, distDir) => {
+    const newFileName = await fileNameResolver(distDir, originPath)
     const readable = fs.createReadStream(originPath, { encoding: 'utf-8'})
-    const writable = fs.createWriteStream(copyPath)
+    const writable = fs.createWriteStream(path.resolve(distDir, newFileName))
     
     readable.pipe(writable)
 

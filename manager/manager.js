@@ -12,13 +12,13 @@ const isValidInput = input => {
     return true
 }
 
-const perform = input => {
+const perform = async input => {
     const [cmd, ...args] = input
     if (!isValidInput(input)) throw new Error(INVALID_INPUT_MESSAGE)
-    return operations[cmd].operation(...args)
+    return await operations[cmd].operation(...args)
 }
 
-export const manageCmd = cmd => {
+export const manageCmd = async cmd => {
     if (getIsExitCmd(cmd)) process.exit()
-    perform(parseCmd(cmd))
+    await perform(parseCmd(cmd))
 }

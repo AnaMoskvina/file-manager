@@ -1,15 +1,18 @@
 import fs from 'fs'
 import os from 'os'
 import { stdout } from 'process'
-import { EXECUTION_ERROR_MESSAGE } from '../constants.js'
+import { Transform } from 'stream'
 
-export const read = (filePath) => {
-    const readStream = fs.createReadStream(filePath)
-    readStream.pipe(stdout)
-    readStream.on('error', () => {
-        throw new Error(EXECUTION_ERROR_MESSAGE)
-    })
-    readStream.on('close', () => {
-        console.log(os.EOL)
-    })
+export const read = filePath => {
+    const newLineTransform = new Transform({
+        transform(chunk, _encoding, callback) {
+          this.push(chunk)
+          this.push(os.EOL)
+          callback()
+        }
+      })
+
+    fs.createReadStream(filePath)
+        .pipe(newLineTransform)
+        .pipe(stdout)
 }
