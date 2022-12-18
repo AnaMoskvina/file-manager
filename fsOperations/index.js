@@ -1,4 +1,5 @@
 export * from './navigate.js'
+export * from './ls.js'
 export * from './read.js'
 export * from './cp.js'
 export * from './add.js'
